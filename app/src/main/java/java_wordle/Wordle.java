@@ -40,6 +40,7 @@ public class Wordle {
 
         while (!done) {
             String word = possibleWords.get(rand.nextInt(possibleWords.size()));
+            System.out.println(word);
 
             boolean guessed = false;
 
@@ -79,14 +80,19 @@ public class Wordle {
                     validGuess = true;
                 }
 
+                ArrayList<Character> wrongPlaceMatchedLetters = new ArrayList<>();
                 for (int k=0; k < 5; k++) {
                     char wordChar = word.charAt(k);
                     char guessChar = guess.charAt(k);
                     String color = "";
                     if (guessChar == wordChar) {
                         color = ANSI_GREEN;
-                    } else if (word.contains(guessChar + "")) {
-                        color = ANSI_YELLOW;
+                    } else if (word.contains(guessChar + "") && !wrongPlaceMatchedLetters.contains(guessChar)) {
+                        int indexInAnswer = word.indexOf(guessChar);
+                        if (guess.charAt(indexInAnswer) != guessChar) {
+                            color = ANSI_YELLOW;
+                        }
+                        wrongPlaceMatchedLetters.add(guessChar);
                     }
                     System.out.print(color + Character.toUpperCase(guessChar) + ANSI_RESET + " ");
                 }
