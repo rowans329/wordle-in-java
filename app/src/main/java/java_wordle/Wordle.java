@@ -50,7 +50,7 @@ public class Wordle {
                 while (!validGuess) {
                     System.out.print(i + " ");
 
-                    guess = scanner.nextLine();
+                    guess = scanner.nextLine().toLowerCase();
 
                     if (guess.length() != 5) {
                         System.out.println(ANSI_RED + "Invalid word: must be 5 letters" + ANSI_RESET);
@@ -93,11 +93,11 @@ public class Wordle {
 
                 System.out.println();
 
-                if (guess == word) {
+                if (guess.equals(word)) {
                     guessed = true;
 
                     System.out.print(ANSI_GREEN + "You won! Play again? [y/n] " + ANSI_RESET);
-                    if (scanner.nextLine() != "y") {
+                    if (!scanner.nextLine().equalsIgnoreCase("y")) {
                         done = true;
                     }
 
@@ -107,7 +107,7 @@ public class Wordle {
 
             if (!guessed) {
                 System.out.print("The word was " + word + ". Try again? [y/n] ");
-                if (scanner.nextLine() != "y") {
+                if (!scanner.nextLine().equalsIgnoreCase("y")) {
                     done = true;
                 }
             }
