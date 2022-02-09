@@ -40,6 +40,7 @@ public class Wordle {
 
         while (!done) {
             String word = possibleWords.get(rand.nextInt(possibleWords.size()));
+            System.out.println(word);
 
             boolean guessed = false;
 
