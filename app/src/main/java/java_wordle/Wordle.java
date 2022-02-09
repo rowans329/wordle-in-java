@@ -27,8 +27,8 @@ public class Wordle {
         final String ANSI_RED = "\u001B[31m";
         final String ANSI_RESET = "\u001B[0m";
 
-        String allowedWordsPath = "allowed_words.txt";
-        String possibleWordsPath = "possible_words.txt";
+        String allowedWordsPath = "words/allowed_words.txt";
+        String possibleWordsPath = "words/possible_words.txt";
 
         List<String> allowedWords = loadFile(allowedWordsPath);
         List<String> possibleWords = loadFile(possibleWordsPath);
